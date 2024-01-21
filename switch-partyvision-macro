@@ -1,0 +1,10 @@
+const partyvision = game.settings.get("pf2e", "metagame_partyVision");
+console.log(partyvision);
+let chat_status = `<h2>Party Vision is now ${!partyvision ? "On" : "Off"}`;
+ChatMessage.create({
+user: game.user._id,
+speaker: ChatMessage.getSpeaker({ token: actor }),
+content: chat_status
+});
+
+await game.settings.set("pf2e", "metagame_partyVision", !game.settings.get("pf2e", "metagame_partyVision"));
